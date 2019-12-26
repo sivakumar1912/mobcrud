@@ -1,0 +1,49 @@
+doctype html
+html
+  head
+      title='Product crud'
+      link(rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" type="text/css")
+      meta(name="viewport",content="width=device-width,initial-scale=-1")
+      script(src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js")
+      script(src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js")
+  body
+      nav.navbar.navbar-inverse
+        .container
+          .navbar-header
+            a(href="/",class="navbar-brand") Product Crud
+            button(class="navbar-toggle",data-target="#menu",data-toggle="collapse")
+              span.icon-bar
+              span.icon-bar
+              span.icon-bar
+          div(class="collapse navbar-collapse",id="menu")
+            ul.navbar-nav.nav
+              li
+                a(href="/") Products
+              li
+                a(href="/create") Create Products
+
+      .container
+        .row
+          .col-md-12.jumbotron
+            h1.text-center="Edit"
+      .container
+          .row
+              .col-md-6.col-md-offset-3.well
+                  form(action="/update/" + product['_id'],method="post",autocomplete="off")
+                      .form-group
+                          label="Title"
+                          input(type="text",name="title",class="form-control",placeholder="Enter Name",value=product['title'],required)
+                      .form-group
+                          label="Image-Url"
+                          input(type="url",name="image",class="form-control",placeholder="Enter Url",value=product['image'],required)
+                      .form-group
+                          label="Price"
+                          input(type="number",name="price",class="form-control",placeholder="Enter Price",value=product['price'],required)
+                      .form-group
+                          label="Gst"
+                          input(type="number",name="gst",class="form-control",placeholder="Enter Gst",value=product['gst'],required)
+                      .form-group
+                          label="Description"
+                          input(type="text",name="description",class="form-control",placeholder="Enter Description",value=product['description'],required)
+                      .form-group
+                          input(type="submit",class="btn btn-info btn-lg",value="Update Product",required)

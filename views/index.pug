@@ -1,0 +1,50 @@
+doctype html
+html
+  head
+      title='Product crud'
+      link(rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" type="text/css")
+      meta(name="viewport",content="width=device-width,initial-scale=-1")
+      script(src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js")
+      script(src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js")
+  body
+      nav.navbar.navbar-inverse
+        .container
+          .navbar-header
+            a(href="/",class="navbar-brand") Product Crud
+            button(class="navbar-toggle",data-target="#menu",data-toggle="collapse")
+              span.icon-bar
+              span.icon-bar
+              span.icon-bar
+          div(class="collapse navbar-collapse",id="menu")
+            ul.navbar-nav.nav
+              li
+                a(href="/") Products
+              li
+                a(href="/create") Create Products
+
+      .container
+        .row
+          .col-md-12.jumbotron
+            h1.text-center="Product-List"
+      .container
+        .row
+        for x in products
+          .col-md-4
+            .panel.panel-primary
+              .panel-heading
+                h1.panel-title=x['title']
+              .panel-body
+                img-responsive.img-thumbnail
+                  img(src=x['image'],class="img-responsive")
+                ul.list-group
+                  li.list-group-item Price
+                    span.pull-right=x['price']
+                  li.list-group-item Gst
+                    span.pull-right=x['gst']
+                  li.list-group-item Description
+                    span.pull-right=x['description']
+              .panel-footer
+                a(class="btn btn-info" href="/edit/" + x['_id'])
+                  span.glyphicon.glyphicon-edit
+                a(class="btn btn-danger pull-right" href="/delete/" + x['_id'])
+                  span.glyphicon.glyphicon-trash
